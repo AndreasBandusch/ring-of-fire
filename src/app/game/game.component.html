@@ -1,0 +1,51 @@
+<app-player (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;"
+    [ngStyle]="{'top.px': 130 + (i * 90)}" [playerActive]="i == game.currentPlayer" [image]="game.playerImages[i]"
+    [name]="player" class="player-position hide-mobile">
+</app-player>
+
+<div class="scroll-container hide-desktop">
+    <app-player-mobile (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;"
+        [playerActive]="i == game.currentPlayer" [image]="game.playerImages[i]" [name]="player">
+    </app-player-mobile>
+</div>
+
+<div *ngIf="game.gameOver" class="game-over">
+    <div class="spotlight">
+        <h1>Game over!</h1>
+        <div class="button-cont">
+            <button (click)="restartGame()" class="endscreen-button">RESTART GAME</button>
+            <button (click)="routerA.navigateByUrl('')" class="endscreen-button">HOME SCREEN</button>
+        </div>
+    </div>
+</div>
+
+<div class="field" style="background-image: url('./assets/img/board1.jpg')">
+    <div class="card-stack">
+
+        <!-- Card stack -->
+        <div *ngIf="game.stack.length > 1">
+            <img [ngStyle]="{'right.px': i * 1}" *ngFor="let c of game.stack; let i = index;"
+                src="assets/img/cards/card_back.png">
+        </div>
+
+        <img *ngIf="game.stack.length > 0" (click)="takeCard()" class="top-card"
+            [ngStyle]="{'right.px': game.topCardPos}" src="assets/img/cards/card_back.png">
+
+        <!-- Stack for played cards -->
+        <img *ngFor="let card of game.playedCards; let i = index" [ngStyle]="getRandomCardPosition(i)"
+            class="played-card" src="assets/img/cards/{{ card }}.png">
+        <!-- Current card (Animation) -->
+
+
+        <img *ngIf="game.pickCardAnimation && game.stack.length > -1" class="pick-card" style="right: 50px"
+            src="assets/img/cards/{{ game.currentCard }}.png">
+    </div>
+    <app-game-display [alertMessage]="alertMessage" [cardsToPlay]="game.stack.length" [sinOrPlu]="game.sinOrPlu"
+        [playAllowed]="playAllowed" [messageBlink]="messageBlink"></app-game-display>
+</div>
+<app-game-info [card]="game.currentCard" class="pin-bottom">
+</app-game-info>
+<button mat-fab color="primary" (click)="openDialog()" class="btn-add" [ngClass]="{'add-blink':addBlink }">
+    <mat-icon>add</mat-icon>
+</button>
+<img class="preload-image" src="assets/img/cards/{{ game.stack[game.stack.length -1] }}.png">

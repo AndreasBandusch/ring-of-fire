@@ -1,0 +1,46 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.highlight {
+    color: #fdcd44;
+    font-weight: bold;
+}
+
+.message-blink {
+    animation: messageBlinker 225ms linear 5;
+  }
+  
+  @keyframes messageBlinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .add-blink {
+    animation: addBlinker 1s linear 5;
+  }
+  
+  @keyframes addBlinker {
+    50% {
+      opacity: 0;
+      transform: scale(1.3);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .hide-mobile {
+      display: none;
+    }
+  }
+
+  @media (min-width: 720px) {
+    .hide-desktop {
+      display: none;
+     
+    }
+  }

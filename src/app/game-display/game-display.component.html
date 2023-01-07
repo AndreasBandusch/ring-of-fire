@@ -1,0 +1,5 @@
+<div class="game-display">
+    <p *ngIf="playAllowed">Still <span class="highlight">{{ cardsToPlay }}</span> {{ sinOrPlu }} to play</p>
+    <p id="alert-massage" *ngIf="!playAllowed" [innerHTML]="alertMessage" [ngClass]="{'message-blink': messageBlink}"></p>
+</div>
+

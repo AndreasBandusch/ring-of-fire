@@ -1,0 +1,10 @@
+<div class="start-screen">
+    <div class="header" [ngStyle]="headerScale">
+        <h1>Ring of Fire</h1>
+    </div>
+    <img src="assets/img/start-screen.jpg">
+    <div id="start-screen-label">
+        <button (click)="newGame()" (mouseenter)="enlargeHeaderScale()" (mouseleave)="reduceHeaderScale()" id="start-game">Start
+            new Game</button>
+    </div>
+</div>

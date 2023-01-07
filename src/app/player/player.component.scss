@@ -1,0 +1,47 @@
+.player {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, .5);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+
+    &:hover {
+        filter: brightness(1.15);
+        transform: scale(1.2);
+        transition: all 225ms ease-in-out;
+    }
+
+    &:focus {
+        transition: all 1s ease-in-out;
+    }
+
+    span {
+        font-size: 24px;
+        margin-left: 16px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+}
+
+.player-active {
+    background-color: #fdcd44 !important;
+    color: black;
+    transition: all 225ms ease-in-out;
+
+    &:focus {
+        transition: all 1s ease-in-out;
+    }
+}
